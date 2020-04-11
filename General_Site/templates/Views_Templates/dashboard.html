@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">home feed</h1>
+             
+            </div>
+  
+            <!-- Content Row -->
+            <div class="row">
+  
+              <!-- Earnings (Monthly) Card Example -->
+              <!-- 
+
+
+                          <div class="col-xl-3 col-md-6 mb-4 animated--grow-in
+              ">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">see everything trending</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">what's up?</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              -->
+              <div class="col-xl-3 col-md-6 mb-4 animated--grow-in
+              ">
+                <div class="card shadow h-100 py-2 bg-gray-500">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-gray-100">coming soon</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">coming soon</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--
+              
+
+              <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <a href="/c" style="text-decoration: none;">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">a common interest setting</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">my communities</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                
+                </div>
+              </div>
+
+
+
+              -->
+             
+
+             
+
+                           <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <a href="/c" style="text-decoration: none;">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">a common interest setting</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">my communities</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-list fa-fw-circle fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                
+                </div>
+              </div>
+
+
+
+
+              <!--
+
+                            <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">share your momments</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">post</div>
+                          </div>
+                          <div class="col">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              -->
+              <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <a style="text-decoration: none;"href="#" type="button" data-toggle="modal" data-target="#myPost">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">share your thoughts</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">post</div>
+                          </div>
+                          <div class="col">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-arrow-up fa-fw-circle fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                </div>
+              </div>
+
+
+                          <!-- Modal -->
+      
+          
+
+
+
+
+
+              <!--
+
+
+              
+              <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">message a friend</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">5 : unread</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+
+              -->
+  
+              <!-- Pending Requests Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4 animated--grow-in">
+                <div class="card shadow h-100 py-2 bg-gray-500">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 text-gray-100">coming soon</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">coming soon</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+{% endblock %}
+
+
+

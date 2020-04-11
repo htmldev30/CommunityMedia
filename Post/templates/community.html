@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+ {% block title %} Hashn {% endblock %} 
+ {% block content %}
+
+
+
+      <style>
+        .col-md-4:hover{
+            -ms-transform: scale(1.015);
+            /* IE 9 */
+            -webkit-transform: scale(1.015);
+            /* Safari 3-8 */
+            transform: scale(1.015);
+        }
+    </style>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+            <img class="img-fluid rounded mb-4 mb-lg-0 border-bottom-success" src="{{community.community_image_icon.url}}" alt="">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">{{community.community_name}}</h1>
+            <p>{{community.community_bio}}</p>
+            <a class="btn btn-primary" href="#">Call to Action!</a>
+
+            <p class="text-danger mb-0"> POSTING IS ONLY AVAILABLE IN THE HOME PAGE RIGHT NOW <a href="{% url 'home' %}"> Home </a> </p>
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+
+    <!-- Call to Action Well -->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">A dedicated news and headsup banner - Coming Soon</p>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-md-4 mb-5">
+            <!-- Basic Card Example -->
+            <div class="card shadow mb-4 border-bottom-success">
+                <div class="card-header py-3">
+                    <h5 class="m-0 font-weight-bold text-primary">{{post.user_posted_by}} <small style="font-size: 11px"> at {{post.time_posted}}</small></h5>
+                </div>
+                <div class="card-body">
+                    {{ post.post_content }}
+                    {% if not post.post_pic %}
+
+                      {% else %}
+                       <hr>
+                      <img class="img-fluid rounded mb-4 mb-lg-0"src="{{post.post_pic.url}}">
+                    {% endif %}
+                </div>
+
+                <!--
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                </div>
+              -->
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+{% endblock %}

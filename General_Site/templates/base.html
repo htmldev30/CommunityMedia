@@ -1,0 +1,285 @@
+{% load static %}
+{% load crispy_forms_tags%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/smiling-face-with-heart-eyes.png" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} {% endblock %}</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href=" {% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <!-- Hover -->
+
+    <style>
+        .col-xl-3:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <h4>hashn</h4>
+                <!-- Topbar Search -->
+
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="search" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                        <a style="text-decoration: none;"href="#" type="button" data-toggle="modal" data-target="#myPost" class="btn btn-info btn-icon-split text-center small text-gray-500">
+                            Post Now
+                                   </a>    
+
+
+                    <div id="myPost" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!--Modal content-->
+                    <div class="modal-content">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-success">Post Something</h6>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="col-auto">
+
+                            </div>
+                            <form action="{{post_form.community_slug}}" method="POST" enctype="multipart/form-data">
+                            <!-- Form goes here-->
+                            {%csrf_token%}
+                            {{post_form|crispy}}
+                        </div>
+                        <div class="modal-footer">
+                           
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-success">
+
+                        </div>
+                      </form>
+                    </div>
+
+                </div>
+            </div>      
+                
+
+                <!-- Nav Bar Basic Navagation -->
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- Nav Item - Alerts -->
+
+                    <!-- Nav Item - Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        </a>
+
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">
+                  Communities
+                </h6> {% for community in communities %}
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="{{community.community_image_icon.url}}" alt="">
+                                    <!--<div class="status-indicator bg-success"></div> -->
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{community.community_name}}</div>
+
+                                </div>
+                            </a>
+                            {% endfor %}
+                            <a class="dropdown-item text-center small text-gray-500" href="/c">All Communities</a>
+                        </div>
+                    </li>
+
+                    <!-- Nav Item - Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <!-- Counter - Messages -->
+                            <span class="badge badge-danger badge-counter">7</span>
+                        </a>
+                        <!-- Dropdown - Messages -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                            <h6 class="dropdown-header">
+                  Other Users
+                </h6> {% for user in all_users %}
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="{{user.user_image_icon.url}}" alt="">
+                                    <!--<div class="status-indicator bg-success"></div> -->
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{user.user}}</div>
+
+                                </div>
+                            </a>
+                            {% endfor %}
+                            <a class="dropdown-item text-center small text-gray-500" href="/p">All Users</a>
+                        </div>
+                    </li>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.get_username }}</span>
+                            <img class="img-profile rounded-circle" src="{{ user.userprofile.user_image_icon.url }}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+                            <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#myModal">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                            </a>
+
+                            <a class="dropdown-item" style="text-decoration: none;"href="#" type="button" data-toggle="modal" data-target="#myCommunity_Post">
+                              
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Start Community
+                            </a>
+                            </a>
+    
+                
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- User Name With Profile Icon -->
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!--Modal content-->
+                    <div class="modal-content">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Your Profile</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="col-auto">
+
+                            </div>
+                            <p> <b>Bio:</b> {{user.userprofile.user_bio}}</p>
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+                                        <div id="myCommunity_Post" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!--Modal content-->
+                    <div class="modal-content">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-success">Start a community</h6>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="col-auto">
+
+                            </div>
+                            <form action="" method="POST" enctype="multipart/form-data">
+                            <!-- Form goes here-->
+                            {%csrf_token%}
+                            {{community_form|crispy}}
+                        </div>
+                        <div class="modal-footer">
+                           
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-success">
+
+                        </div>
+                      </form>
+                    </div>
+
+                </div>
+            </div>  
+
+            {% block content %} {% endblock %}
+            <!-- Bootstrap core JavaScript-->
+            <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+            <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+            <!-- Custom scripts for all pages-->
+            <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+            <!-- Page level plugins -->
+            <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+            <!-- Page level custom scripts -->
+            <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+            <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% include "community.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Hashn {% endblock %}
+{% block content %}
+
+   <!-- /.row -->
+<div >
+                <div class="modal-dialog border-bottom-success">
+
+                    <!--Modal content-->
+                    <div class="modal-content card shadow">
+
+                       W <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{{post_iso.user_posted_by}}  <small style="font-size: 11px"> at {{post_iso.time_posted}}</small></h6>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="m-0 font-weight-bold text-success"> {{post_iso.post_header}}</h5>
+                            <p class="text-dark m-0">
+                            {{post_iso.post_content}}
+                            </p>
+                            
+                            <div class="col-auto">
+                                              
+                            
+                        </div>
+                        <hr>
+                            <div class="col-auto">
+                                  <form method="POST" enctype="multipart/form-data">
+                            <!-- Form goes here-->
+                            {%csrf_token%}
+                            {{comment_form|crispy}}
+                        </div>
+                        <div class="modal-footer">
+                           
+                            <input type="submit" class="btn btn-success">
+
+                        </div>
+                      </form>
+                            <h6 class="m-0 text-info">Comments: </h6>
+                            <hr>
+                            {% for comment in comments %}
+                            {% if not comment.comment_pic %}
+
+                        {% else %}
+                       <hr>
+                            <img class="img-fluid rounded mb-4 mb-lg-0 "src="{{comment.comment_pic.url}}">
+                            <br>
+                            <br>
+                            {% endif %}
+                            <h6 class="text-dark m-0">
+                                {{comment.user_commented_by}}
+                            </h6>
+                                <p class="text-dark m-0"> |{{comment.comment}} 
+                                </p>
+                                <small>{{comment.time_commented}}</small>
+                                <br>
+                                <hr>
+                            {% endfor %}
+
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>      
+
+
+        </div>
+
+
+
+               
+                        
+
+
+{% endblock %}

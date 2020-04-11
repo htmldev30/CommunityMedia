@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Register {% endblock %}
+
+
+{% block content %}
+      
+      {% if user.is_authenticated %}
+
+
+
+      {% endif %}
+
+      <!-- Starting -->
+      <body class="bg-gradient-primary">
+
+          <div class="container">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+              <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                  <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                  <div class="col-lg-7">
+                    <div class="p-5">
+                      <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">{% if user.is_authenticated %} You Are Already Registered <a href="{% url 'home' %}"> Home </a> {% else %} Create an Account! </h1>
+                      </div>
+                      <h2 class="text-center text-danger"> <p> This is an Alpha Test </p>  DO NOT USE ANYTHING PERSONAL </h2>
+                      <form class="user" method="POST">
+                          {% csrf_token %}
+                          {{register_form|crispy}} 
+                          <h4 class="text-danger"> By Registering, you are CONFIRMING at FREE-WILL your AGE as OLDER THAN 18 years old. <small> We aren't liable for any lawsuits</small> </h4>
+                      <input type="submit" class="btn btn-success btn-icon" value="Register">   
+                    </form>
+                        {% endif %}
+                      <hr>
+                      <div class="text-center">
+                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                      </div>
+                      <div class="text-center">
+                        <a class="small" href="{% url 'login'%}">Already have an account? Login!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </body>        
+  
+
+{% endblock %}
