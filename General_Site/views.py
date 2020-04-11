@@ -54,5 +54,3 @@ def home(request, pk=None):
 
 
 
-
-	

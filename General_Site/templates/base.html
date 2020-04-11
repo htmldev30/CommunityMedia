@@ -43,7 +43,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <h4>hashn</h4>
+                <a style="text-decoration:none;" href="{% url 'home' %}"><h4>hashn</h4></a>
                 <!-- Topbar Search -->
 
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -58,9 +58,10 @@
 
                 </form>
 
-                        <a style="text-decoration: none;"href="#" type="button" data-toggle="modal" data-target="#myPost" class="btn btn-info btn-icon-split text-center small text-gray-500">
-                            Post Now
-                                   </a>    
+                          {% block nav_post %}
+
+
+                    {% endblock %}
 
 
                     <div id="myPost" class="modal fade" role="dialog">
@@ -166,7 +167,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.get_username }}</span>
-                            <img class="img-profile rounded-circle" src="{{ user.userprofile.user_image_icon.url }}">
+                            <img class="img-profile rounded-circle" src="{{user.userprofile.user_image_icon.url}}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

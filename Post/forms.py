@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Posts, Communities
+from .models import Posts, Communities, Comments
 
 
 class CommunityForm(ModelForm):
@@ -11,5 +11,10 @@ class CommunityForm(ModelForm):
 class PostForm(ModelForm):
 	class Meta:
 		model = Posts
-		fields = ["post_content", "post_pic", "community"]
+		fields = ["post_header","post_content", "post_pic", "community"]
 
+
+class CommentForm(ModelForm):
+	class Meta:
+		model = Comments
+		fields = ["comment", "comment_pic"]
