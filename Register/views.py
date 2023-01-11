@@ -1,3 +1,5 @@
+# Code adapted from techwithtim Django-Auth-And Perms GitHub Repository. This was a tuorial guide video on his channel.
+# https://github.com/techwithtim/Django-Auth-And-Perms
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 
